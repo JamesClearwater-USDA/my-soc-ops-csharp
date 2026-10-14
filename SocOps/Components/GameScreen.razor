@@ -1,38 +1,41 @@
 @using SocOps.Models
 
-<div class="flex flex-col min-h-full bg-gray-50">
-    <!-- Header -->
-    <header class="flex items-center justify-between p-3 bg-white border-b border-gray-200">
-        <button
-            @onclick="OnReset"
-            class="text-gray-500 text-sm px-3 py-1.5 rounded active:bg-gray-100">
-            ← Back
+<main class="rave-shell game-shell">
+    <div class="game-backdrop" aria-hidden="true"></div>
+    <header class="game-header">
+        <button @onclick="OnReset" class="back-button">
+            <span aria-hidden="true">←</span> Exit floor
         </button>
-        <h1 class="font-bold text-gray-900">Soc Ops</h1>
-        <div class="w-16"></div>
+        <div class="live-status"><span class="live-dot"></span> Floor live</div>
+        <div class="round-readout">ROUND <strong>01</strong></div>
     </header>
 
-    <!-- Instructions -->
-    <p class="text-center text-gray-500 text-sm py-2 px-4">
-        Tap a square when you find someone who matches it.
-    </p>
+    <section class="game-intro" aria-labelledby="game-title">
+        <div>
+            <p class="eyebrow">Social frequency / active</p>
+            <h1 id="game-title">Make a <span>connection.</span></h1>
+        </div>
+        <p class="game-instruction">Tap a square when you find someone who matches its signal.</p>
+    </section>
 
-    <!-- Bingo indicator -->
     @if (HasBingo)
     {
-        <div class="bg-amber-100 text-amber-800 text-center py-2 font-semibold text-sm">
-            🎉 BINGO! You got a line!
+        <div class="bingo-banner" role="status">
+            <span class="banner-spark" aria-hidden="true">✦</span>
+            <span><strong>Line connected.</strong> The floor is yours.</span>
+            <span class="banner-spark" aria-hidden="true">✦</span>
         </div>
     }
 
-    <!-- Board -->
-    <div class="flex-1 flex items-center justify-center p-3">
+    <section class="board-stage" aria-label="Social bingo board">
+        <div class="stage-label stage-label-top"><span>Signal grid</span><span>5 × 5</span></div>
         <BingoBoard
             Board="@Board"
             WinningSquareIds="@WinningSquareIds"
             OnSquareClick="@OnSquareClick" />
-    </div>
-</div>
+        <div class="stage-label stage-label-bottom"><span>Tap to activate</span><span>Soc Ops / 2026</span></div>
+    </section>
+</main>
 
 @code {
     [Parameter]

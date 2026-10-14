@@ -1,26 +1,53 @@
-<div class="flex flex-col items-center justify-center min-h-full p-6 bg-gray-50">
-    <div class="text-center max-w-sm">
-        <h1 class="text-4xl font-bold text-gray-900 mb-2">Soc Ops</h1>
-        <p class="text-lg text-gray-600 mb-8">Social Bingo</p>
+<main class="rave-shell start-shell">
+    <div class="ambient-orb ambient-orb-cyan" aria-hidden="true"></div>
+    <div class="ambient-orb ambient-orb-magenta" aria-hidden="true"></div>
 
-        <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-8">
-            <h2 class="font-semibold text-gray-800 mb-3">How to play</h2>
-            <ul class="text-left text-gray-600 text-sm space-y-2">
-                <li>• Find people who match the questions</li>
-                <li>• Tap a square when you find a match</li>
-                <li>• Get 5 in a row to win!</li>
-            </ul>
+    <section class="start-card" aria-labelledby="start-title">
+        <div class="eyebrow"><span class="live-dot"></span> Social frequency / open floor</div>
+        <div class="brand-lockup">
+            <span class="brand-mark" aria-hidden="true">SO</span>
+            <div>
+                <p class="brand-kicker">After-hours connection protocol</p>
+                <h1 id="start-title">SOC <span>OPS</span></h1>
+            </div>
+        </div>
+        <p class="start-lede">Find your people.<br /><strong>Light up the room.</strong></p>
+
+        <div class="how-to-panel">
+            <div class="panel-label">Mission briefing <span>01 — 03</span></div>
+            <ol class="briefing-list">
+                <li><span>01</span><p>Find someone who matches a square.</p></li>
+                <li><span>02</span><p>Tap their signal to mark it live.</p></li>
+                <li><span>03</span><p>Connect five across to trigger the drop.</p></li>
+            </ol>
         </div>
 
-        <button
-            @onclick="OnStart"
-            class="w-full bg-accent text-white font-semibold py-4 px-8 rounded-lg text-lg active:bg-accent-light transition-colors">
-            Start Game
-        </button>
-    </div>
-</div>
+        <div class="start-actions">
+            <button @onclick="OnStart" class="rave-button primary-button">
+                <span>Enter the floor</span>
+                <span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button
+                type="button"
+                class="pulse-toggle @(PulseMode ? "is-active" : "")"
+                aria-pressed="@PulseMode"
+                @onclick="TogglePulseMode">
+                <span class="pulse-icon" aria-hidden="true">◉</span>
+                <span>@(PulseMode ? "Pulse mode on" : "Pulse mode off")</span>
+            </button>
+        </div>
+        <p class="start-footnote">No spectators. Just sparks.</p>
+    </section>
+</main>
 
 @code {
     [Parameter]
     public EventCallback OnStart { get; set; }
+
+    private bool PulseMode { get; set; } = true;
+
+    private void TogglePulseMode()
+    {
+        PulseMode = !PulseMode;
+    }
 }

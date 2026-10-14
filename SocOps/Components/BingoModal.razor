@@ -1,13 +1,13 @@
-<div class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-    <div class="bg-white rounded-xl p-6 max-w-xs w-full text-center shadow-xl animate-[bounce_0.5s_ease-out]">
-        <div class="text-5xl mb-4">🎉</div>
-        <h2 class="text-3xl font-bold text-amber-500 mb-2">BINGO!</h2>
-        <p class="text-gray-600 mb-6">You completed a line!</p>
-
-        <button
-            @onclick="OnDismiss"
-            class="w-full bg-accent text-white font-semibold py-3 px-6 rounded-lg active:bg-accent-light transition-colors">
-            Keep Playing
+<div class="modal-backdrop" role="presentation">
+    <div class="bingo-modal" role="dialog" aria-modal="true" aria-labelledby="bingo-title">
+        <div class="modal-rays" aria-hidden="true"></div>
+        <div class="modal-signal" aria-hidden="true">✦</div>
+        <p class="eyebrow">Transmission complete</p>
+        <h2 id="bingo-title">BINGO<span>!</span></h2>
+        <p class="modal-copy">Five signals aligned.<br /><strong>You found the frequency.</strong></p>
+        <button @onclick="OnDismiss" class="rave-button primary-button">
+            <span>Keep playing</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
         </button>
     </div>
 </div>
