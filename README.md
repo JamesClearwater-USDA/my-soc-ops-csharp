@@ -1,56 +1,93 @@
-🌐 [Português (BR)](README.pt_BR.md) | [Español](README.es.md)
+<div align="center">
 
-# Soc Ops
+# 🎯 Soc Ops
 
-Social Bingo game for in-person mixers. Find people who match the questions and get 5 in a row!
+### Break the ice. Meet the room. Call BINGO.
 
-🎮 **[Play the Game](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/)** • 📚 **[View Lab Guide](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/)**
+**Soc Ops turns any in-person gathering into a fast, friendly social challenge.**
+Find people who match the prompts on your card, mark five in a row, and celebrate the connections you made along the way.
 
----
+[**🎮 Play now**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/) · [**📚 Start the lab**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/) · [**🤝 Contribute**](CONTRIBUTING.md)
 
-## 📚 Lab Guide
+[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/download/dotnet/10.0)
+[![Blazor WebAssembly](https://img.shields.io/badge/Blazor-WebAssembly-702AF7?logo=blazor)](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
+[![MIT License](https://img.shields.io/badge/license-MIT-2F855A)](LICENSE)
 
-| Part | Title |
-|------|-------|
-| [**00**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=00-overview) | Overview & Checklist |
-| [**01**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=01-setup) | Setup & Context Engineering |
-| [**02**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=02-design) | Design-First Frontend |
-| [**03**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=03-quiz-master) | Custom Quiz Master |
-| [**04**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=04-multi-agent) | Multi-Agent Development |
+🌐 **English** · [Português (BR)](README.pt_BR.md) · [Español](README.es.md)
 
-> 📝 Lab guides are also available in the [`workshop/`](workshop/) folder for offline reading.
+</div>
 
 ---
 
-## Prerequisites
+## A conversation starter disguised as a game
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or higher
+Soc Ops gives every player a 5×5 card filled with conversation prompts. Walk around, meet someone who matches a square, and tap it to mark your progress. Complete a row, column, or diagonal to win.
 
-## Open in GitHub Codespaces (optional)
+### How to play
 
-After creating your own repo from this template:
+1. **Start a card** — open the game and tap **Start Game**.
+2. **Meet someone** — find a person who matches one of the prompts.
+3. **Mark the square** — tap it to record your match.
+4. **Get five in a row** — complete a line and call **BINGO!**
 
-1. Open your repo on GitHub
-2. Click **Code** → **Codespaces** → **Create codespace on main**
-3. Wait for the devcontainer to finish setup
-4. From the repository root, run:
-   ```bash
-   cd SocOps
-   dotnet run
-   ```
+Perfect for meetups, workshops, conferences, classrooms, and team events.
 
-## Run
+## ✨ What is inside
+
+- 📱 A responsive, touch-friendly bingo board
+- 🎉 Automatic row, column, and diagonal win detection
+- 🔀 A fresh randomized card for every game
+- ⚡ A lightweight Blazor WebAssembly experience
+- 🧭 A hands-on GitHub Copilot agent lab built around the app
+
+## 🚀 Run it locally
+
+### Prerequisite
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or later
+
+From the repository root:
 
 ```bash
-cd SocOps
-dotnet run
+dotnet run --project SocOps/SocOps.csproj
 ```
 
-## Build
+Open [http://localhost:5166](http://localhost:5166), then start meeting people.
+
+To create a production build:
 
 ```bash
-cd SocOps
-dotnet build
+dotnet build SocOps/SocOps.csproj
 ```
 
-Deploys automatically to GitHub Pages on push to `main`.
+> Prefer a cloud environment? Create a GitHub Codespace from **Code → Codespaces → Create codespace on main**, then run the same command.
+
+## 🧪 Learn by building
+
+This repository is also a guided lab for learning how to collaborate with GitHub Copilot agents. Follow the journey online or read the guides in [`workshop/`](workshop/) offline.
+
+| Part | Mission |
+|:---:|---|
+| [**00**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=00-overview) | Get oriented with the overview and checklist |
+| [**01**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=01-setup) | Set up the project and practice context engineering |
+| [**02**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=02-design) | Shape the experience with design-first frontend work |
+| [**03**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=03-quiz-master) | Create a custom Quiz Master agent |
+| [**04**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=04-multi-agent) | Coordinate multi-agent development |
+
+## 🗺️ Project map
+
+```text
+SocOps/
+├── Components/   # Reusable game UI
+├── Data/         # Bingo questions
+├── Models/       # Board and game-state models
+├── Pages/        # Routable Blazor pages
+├── Services/     # Game state and bingo rules
+└── wwwroot/      # Static assets and styles
+```
+
+## 🤝 Join in
+
+Ideas, fixes, and new prompts are welcome. Read the [contribution guide](CONTRIBUTING.md), follow the [Code of Conduct](CODE_OF_CONDUCT.md), and open a pull request.
+
+Soc Ops is released under the [MIT License](LICENSE). Deployments to GitHub Pages run automatically when changes land on `main`.
