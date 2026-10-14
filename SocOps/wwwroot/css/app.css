@@ -73,18 +73,73 @@ button:focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2.5rem 1.25rem;
+    padding: clamp(2rem, 6vw, 4rem) 1.25rem;
     background: radial-gradient(ellipse at 20% 90%, rgba(255, 66, 189, 0.12), transparent 34%), var(--void);
 }
 
-.start-card {
-    width: min(100%, 32rem);
-    padding: clamp(1.5rem, 6vw, 3.5rem);
+.mission-deck {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
+    grid-template-areas:
+        "identity launch"
+        "briefing launch";
+    gap: 1rem;
+    width: min(100%, 54rem);
+}
+
+.deck-card {
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: 1.5rem;
     background: linear-gradient(145deg, rgba(28, 27, 51, 0.92), rgba(10, 10, 21, 0.96));
-    box-shadow: 0 1.5rem 6rem rgba(0, 0, 0, 0.42), 0 0 5rem rgba(255, 66, 189, 0.08);
+    box-shadow: 0 1.5rem 6rem rgba(0, 0, 0, 0.42);
     animation: rise-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.identity-card {
+    grid-area: identity;
+    z-index: 2;
+    min-height: 19rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border-radius: 1.5rem 0.35rem 0.35rem 0.35rem;
+    box-shadow: 0 1.5rem 6rem rgba(0, 0, 0, 0.42), 0 0 5rem rgba(255, 66, 189, 0.08);
+}
+
+.briefing-card {
+    grid-area: briefing;
+    z-index: 3;
+    margin: -2rem 2.25rem 0 1.5rem;
+    padding: 1.1rem;
+    border-radius: 0.35rem 0.35rem 1rem 0.35rem;
+    background: rgba(8, 8, 18, 0.9);
+    animation-delay: 120ms;
+}
+
+.launch-card {
+    grid-area: launch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 26rem;
+    padding: 1.35rem;
+    border-color: rgba(93, 244, 255, 0.42);
+    border-radius: 0.35rem 1.5rem 1.5rem 0.35rem;
+    background: linear-gradient(160deg, rgba(18, 49, 63, 0.94), rgba(22, 15, 38, 0.98) 68%);
+    box-shadow: 0 1.5rem 6rem rgba(0, 0, 0, 0.42), 0 0 3rem rgba(93, 244, 255, 0.1);
+    animation-delay: 240ms;
+}
+
+.launch-card::after {
+    position: absolute;
+    right: -5rem;
+    bottom: -5rem;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid rgba(93, 244, 255, 0.18);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.5rem rgba(93, 244, 255, 0.04), 0 0 0 3rem rgba(255, 66, 189, 0.04);
+    content: "";
+    pointer-events: none;
 }
 
 .eyebrow, .panel-label, .round-readout, .stage-label, .brand-kicker {
@@ -152,7 +207,7 @@ h1, h2, p {
 }
 
 .start-lede {
-    margin: 2.6rem 0 2.2rem;
+    margin: 3.5rem 0 0;
     color: var(--muted);
     font-size: clamp(1.25rem, 5vw, 1.65rem);
     line-height: 1.2;
@@ -163,10 +218,49 @@ h1, h2, p {
     font-weight: 500;
 }
 
-.how-to-panel {
-    padding: 1.1rem;
-    border: 1px solid var(--line);
-    background: rgba(8, 8, 18, 0.58);
+.identity-signal {
+    display: flex;
+    align-items: end;
+    gap: 0.3rem;
+    height: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.identity-signal span {
+    width: 0.3rem;
+    height: 35%;
+    background: var(--magenta);
+    box-shadow: 0 0 0.75rem rgba(255, 66, 189, 0.65);
+    animation: signal-breathe 1.6s ease-in-out infinite alternate;
+}
+
+.identity-signal span:nth-child(2) { height: 70%; animation-delay: 180ms; }
+.identity-signal span:nth-child(3) { height: 100%; animation-delay: 320ms; }
+.identity-signal span:nth-child(4) { height: 58%; animation-delay: 460ms; }
+.identity-signal span:nth-child(5) { height: 82%; animation-delay: 600ms; }
+
+.launch-orbit {
+    position: absolute;
+    top: 3.5rem;
+    right: 2rem;
+    width: 7rem;
+    height: 7rem;
+    border: 1px solid rgba(93, 244, 255, 0.35);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1rem rgba(93, 244, 255, 0.04), 0 0 0 2rem rgba(255, 66, 189, 0.04);
+    animation: orbit-pulse 2.8s ease-in-out infinite;
+}
+
+.launch-orbit span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--yellow);
+    box-shadow: 0 0 1rem var(--yellow);
+    transform: translate(-50%, -50%);
 }
 
 .panel-label {
@@ -214,7 +308,23 @@ h1, h2, p {
     font-size: 0.8rem;
 }
 
+.launch-copy {
+    position: relative;
+    z-index: 1;
+    margin: auto 0 2rem;
+    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.25;
+}
+
+.launch-copy strong {
+    color: var(--ink);
+    font-weight: 500;
+}
+
 .start-actions {
+    position: relative;
+    z-index: 1;
     display: grid;
     gap: 0.85rem;
     margin-top: 2.2rem;
@@ -272,12 +382,18 @@ h1, h2, p {
 }
 
 .start-footnote {
-    margin: 1.5rem 0 0;
+    grid-column: 1 / -1;
+    margin: 0.3rem 0 0;
     color: #5e5d76;
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
     text-align: center;
     text-transform: uppercase;
+}
+
+.start-footnote span {
+    float: right;
+    color: var(--cyan-dim);
 }
 
 .ambient-orb {
@@ -616,7 +732,62 @@ h1, h2, p {
     to { box-shadow: inset 0 0 2rem rgba(255, 230, 109, 0.25), 0 0 1.5rem rgba(255, 66, 189, 0.35); }
 }
 
+@keyframes signal-breathe {
+    from { opacity: 0.45; transform: scaleY(0.7); }
+    to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes orbit-pulse {
+    50% { box-shadow: 0 0 0 1.35rem rgba(93, 244, 255, 0.06), 0 0 0 2.6rem rgba(255, 66, 189, 0.06); }
+}
+
+@media (max-width: 700px) {
+    .mission-deck {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "identity"
+            "briefing"
+            "launch";
+        max-width: 34rem;
+    }
+
+    .briefing-card {
+        margin: -1.5rem 1rem 0;
+    }
+
+    .launch-card {
+        min-height: 20rem;
+        margin-top: -0.35rem;
+        border-radius: 0.35rem 0.35rem 1.5rem 1.5rem;
+    }
+}
+
 @media (max-width: 600px) {
+    .start-shell {
+        align-items: start;
+        padding-top: 1.5rem;
+    }
+
+    .identity-card {
+        min-height: 17rem;
+        padding: 1.5rem;
+    }
+
+    .start-lede {
+        margin-top: 2.5rem;
+    }
+
+    .launch-orbit {
+        top: 2.75rem;
+        right: 1.5rem;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .start-footnote span {
+        display: none;
+    }
+
     .game-intro {
         display: block;
         margin-top: 3.4rem;

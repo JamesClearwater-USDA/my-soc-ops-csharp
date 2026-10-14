@@ -2,18 +2,23 @@
     <div class="ambient-orb ambient-orb-cyan" aria-hidden="true"></div>
     <div class="ambient-orb ambient-orb-magenta" aria-hidden="true"></div>
 
-    <section class="start-card" aria-labelledby="start-title">
-        <div class="eyebrow"><span class="live-dot"></span> Social frequency / open floor</div>
-        <div class="brand-lockup">
-            <span class="brand-mark" aria-hidden="true">SO</span>
-            <div>
-                <p class="brand-kicker">After-hours connection protocol</p>
-                <h1 id="start-title">SOC <span>OPS</span></h1>
+    <section class="mission-deck" aria-labelledby="start-title">
+        <div class="deck-card identity-card">
+            <div class="eyebrow"><span class="live-dot"></span> Social frequency / open floor</div>
+            <div class="brand-lockup">
+                <span class="brand-mark" aria-hidden="true">SO</span>
+                <div>
+                    <p class="brand-kicker">After-hours connection protocol</p>
+                    <h1 id="start-title">SOC <span>OPS</span></h1>
+                </div>
+            </div>
+            <p class="start-lede">Find your people.<br /><strong>Light up the room.</strong></p>
+            <div class="identity-signal" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
             </div>
         </div>
-        <p class="start-lede">Find your people.<br /><strong>Light up the room.</strong></p>
 
-        <div class="how-to-panel">
+        <div class="deck-card briefing-card">
             <div class="panel-label">Mission briefing <span>01 — 03</span></div>
             <ol class="briefing-list">
                 <li><span>01</span><p>Find someone who matches a square.</p></li>
@@ -22,21 +27,27 @@
             </ol>
         </div>
 
-        <div class="start-actions">
-            <button @onclick="OnStart" class="rave-button primary-button">
-                <span>Enter the floor</span>
-                <span class="button-arrow" aria-hidden="true">↗</span>
-            </button>
-            <button
-                type="button"
-                class="pulse-toggle @(PulseMode ? "is-active" : "")"
-                aria-pressed="@PulseMode"
-                @onclick="TogglePulseMode">
-                <span class="pulse-icon" aria-hidden="true">◉</span>
-                <span>@(PulseMode ? "Pulse mode on" : "Pulse mode off")</span>
-            </button>
+        <div class="deck-card launch-card">
+            <div class="launch-orbit" aria-hidden="true"><span></span></div>
+            <div class="panel-label">Launch sequence <span>READY</span></div>
+            <p class="launch-copy">Your room is waiting.<br /><strong>Make the first connection.</strong></p>
+            <div class="start-actions">
+                <button @onclick="OnStart" class="rave-button primary-button">
+                    <span>Enter the floor</span>
+                    <span class="button-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button
+                    type="button"
+                    class="pulse-toggle @(PulseMode ? "is-active" : "")"
+                    aria-pressed="@PulseMode"
+                    @onclick="TogglePulseMode">
+                    <span class="pulse-icon" aria-hidden="true">◉</span>
+                    <span>@(PulseMode ? "Pulse mode on" : "Pulse mode off")</span>
+                </button>
+            </div>
         </div>
-        <p class="start-footnote">No spectators. Just sparks.</p>
+
+        <p class="start-footnote">No spectators. Just sparks. <span>Soc Ops / 2026</span></p>
     </section>
 </main>
 
